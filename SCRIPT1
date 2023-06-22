@@ -1,0 +1,144 @@
+--dim_orgao
+CREATE TABLE data_warehouse.dim_orgao AS
+SELECT
+    e.codigo_orgao AS codigo_orgao,
+    MIN(e.dsc_orgao) AS nome_orgao
+FROM execucao_financeira_despesa e
+GROUP BY e.codigo_orgao
+ORDER BY e.codigo_orgao ASC
+
+--dim_credor
+CREATE TABLE data_warehouse.dim_credor AS
+SELECT
+    e.cod_credor AS codigo_credor,
+    MIN(e.dsc_nome_credor) AS nome_credor
+FROM execucao_financeira_despesa e
+GROUP BY e.cod_credor
+ORDER BY e.cod_credor ASC
+
+--dim_fonte
+CREATE TABLE data_warehouse.dim_fonte AS
+SELECT
+    e.cod_fonte AS codigo_fonte,
+    MIN(e.dsc_fonte) AS nome_fonte
+FROM execucao_financeira_despesa e
+GROUP BY e.cod_fonte
+ORDER BY e.cod_fonte ASC
+
+--fato_valor
+CREATE TABLE data_warehouse.fato_valor AS 
+SELECT 
+	--id, 
+	CONCAT(num_ano, cod_ne, codigo_orgao) AS codigo_empenho,
+	codigo_orgao,
+	cod_credor AS codigo_credor,
+	cod_fonte AS codigo_fonte,
+	cod_funcao AS codigo_funcao,
+	cod_subfuncao AS codigo_subfuncao,
+	cod_item AS codigo_item,
+	cod_item_elemento AS codigo_item_elemento,
+	cod_item_categoria,
+	cod_item_grupo,
+	cod_item_modalidade,
+	cod_programa, 
+	num_sic,
+	cod_np,
+	COALESCE(vlr_empenho, 0.00) AS valor_empenho,
+	COALESCE(vlr_liquidado, 0.00) AS valor_liquidado,
+	COALESCE(valor_pago, 0.00) AS valor_pago,
+		CASE
+			WHEN vlr_resto_pagar IS NULL THEN '0.00'
+			WHEN vlr_resto_pagar = 0.00 THEN (vlr_empenho - valor_pago) 
+			--WHEN vlr_resto_pagar <> 0.00 THEN (vlr_empenho - vlr_resto_pagar)	
+			--ELSE 0.00
+			END AS valor_a_pagar,
+	dth_empenho AS data_empenho,
+	dth_pagamento AS data_pagamento,
+	dth_liquidacao AS data_liquidacao,
+	dth_processamento AS data_processamento,
+	num_ano_np
+FROM execucao_financeira_despesa
+--WHERE cod_ne = '00005274'
+ORDER BY codigo_empenho ASC
+
+-- FUNÇÃO DATA
+CREATE OR REPLACE FUNCTION mes_nome_pt(data date)
+  RETURNS TEXT AS $$
+DECLARE
+  meses TEXT[] := ARRAY['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+BEGIN
+  RETURN meses[EXTRACT(MONTH FROM data)];
+END;
+$$ LANGUAGE plpgsql;
+
+
+--VIEW PARA CRIAÇÃO DO DASHBOARD
+--MODELO CORRETO
+CREATE VIEW data_warehouse.analise_teste1 AS 
+SELECT
+    v.codigo_empenho,
+	v.codigo_orgao,
+	o.nome_orgao,
+	v.codigo_credor,
+	cc.nome_credor,
+	v.codigo_fonte,
+	cf.nome_fonte,
+    v.valor_empenho AS total_empenho,
+    COALESCE(SUM(v.valor_pago), 0.00) AS total_pago,
+    COALESCE(SUM(v.valor_pago), 0.00) AS valor_liquidado,
+    CASE
+        WHEN COALESCE(SUM(v.valor_pago), 0.00) = valor_empenho THEN 0.00
+        ELSE v.valor_empenho - COALESCE(SUM(v.valor_pago), 0.00)
+    END AS valor_a_pagar,
+	t.data AS data_empenho,
+    date_part('year', t.data) AS Ano,
+	date_part('quarter', t.data) AS Trimestre,
+    date_part('month', t.data) AS Mes,
+    mes_nome_pt(t.data) AS Mes_Nome,
+		CASE 
+			WHEN COALESCE(SUM(v.valor_pago), 0.00) = v.valor_empenho THEN MAX(v.data_pagamento)
+        ELSE NULL
+    END AS data_liquidacao
+FROM
+    data_warehouse.fato_valor v
+INNER JOIN data_warehouse.dim_orgao o ON o.codigo_orgao = v.codigo_orgao
+INNER JOIN data_warehouse.dim_credor cc ON cc.codigo_credor = v.codigo_credor
+INNER JOIN data_warehouse.dim_fonte cf ON cf.codigo_fonte = v.codigo_fonte
+INNER JOIN data_warehouse.dim_tempo t ON t.data = v.data_empenho
+GROUP BY
+    v.codigo_empenho, v.codigo_orgao, o.nome_orgao,
+	v.codigo_credor, cc.nome_credor, v.codigo_fonte, cf.nome_fonte, v.valor_empenho, t.data
+--LIMIT 10	
+
+
+
+
+
+
+select * from data_warehouse.dim_tempo
+
+
+
+
+
+--select 
+--	CONCAT(num_ano, cod_ne, codigo_orgao) AS codigo_empenho
+--from execucao_financeira_despesa
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
