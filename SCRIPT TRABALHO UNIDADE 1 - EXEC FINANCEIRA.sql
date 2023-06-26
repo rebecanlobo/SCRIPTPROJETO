@@ -1,3 +1,6 @@
+
+MODELAGEM DOS SCRIPTS PARA CRIAÇÃO DAS TABELAS DIMENSÃO E FATO:
+
 --dim_orgao
 CREATE TABLE data_warehouse.dim_orgao AS
 SELECT
@@ -6,6 +9,23 @@ SELECT
 FROM execucao_financeira_despesa e
 GROUP BY e.codigo_orgao
 ORDER BY e.codigo_orgao ASC
+
+- e.codigo_orgao AS codigo_orgao: Esta parte da consulta seleciona o campo codigo_orgao da tabela execucao_financeira_despesa e o renomeia como codigo_orgao. 
+O campo codigo_orgao é uma coluna que representa o código de identificação do órgão.
+
+- COALESCE(MIN(e.dsc_orgao), e.codigo_orgao) AS nome_orgao: Nesta parte da consulta, usa-se a função COALESCE em conjunto com a função MIN. 
+A função MIN é usada para obter o valor mínimo da coluna dsc_orgao da tabela execucao_financeira_despesa. 
+A função COALESCE é usada para retornar o primeiro valor não nulo entre o valor mínimo da coluna dsc_orgao e o valor de e.codigo_orgao. 
+O resultado dessa operação é renomeado como nome_orgao, que representa o nome do órgão de execução financeira de despesas.
+
+- FROM execucao_financeira_despesa e: Esta parte da consulta especifica a tabela execucao_financeira_despesa 
+e a renomeia como e, que é um alias para facilitar a referência aos campos da tabela.
+
+- GROUP BY e.codigo_orgao: Aqui, a cláusula GROUP BY é usada para agrupar os resultados com base no campo codigo_orgao. 
+Isso significa que os resultados serão agrupados por órgão de execução financeira.
+
+- ORDER BY e.codigo_orgao ASC: A cláusula ORDER BY é usada para ordenar os resultados em 
+ordem ascendente com base no campo codigo_orgao. Isso significa que os resultados serão exibidos em ordem crescente de código de órgão.	
 
 --dim_credor
 CREATE TABLE data_warehouse.dim_credor AS
