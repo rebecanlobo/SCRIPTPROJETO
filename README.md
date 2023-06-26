@@ -15,13 +15,13 @@ MODELAGEM DOS SCRIPTS PARA CRIAÇÃO DAS TABELAS DIMENSÃO E FATO:
 
 - A subconsulta dentro do HAVING seleciona os códigos de órgãos que possuem mais de uma descrição de órgão associado. Em seguida, a consulta principal exibe apenas os registros que possuem um código de órgão presente na subconsulta, filtrando apenas os casos em que o código do órgão é igual, mas o nome do órgão é diferente. Resultando nesses orgãos:
 
-![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/64a06817-9de4-46be-9087-a1c5a56eee7d)
+	![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/64a06817-9de4-46be-9087-a1c5a56eee7d)
 
 
 - A partir dai partimos para a correção na criação da DIM_ORGAO, utilizando a cláusula MIN para mostrar somente a menos descrição
 associada a código do orgão.
 	
-![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/affe5ab0-6644-4799-a3de-4bbbad5389f8)
+	![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/affe5ab0-6644-4799-a3de-4bbbad5389f8)
 
 
 - e.codigo_orgao AS codigo_orgao: Esta parte da consulta seleciona o campo codigo_orgao da tabela execucao_financeira_despesa e o renomeia como codigo_orgao. 
@@ -44,7 +44,7 @@ ordem ascendente com base no campo codigo_orgao. Isso significa que os resultado
 
 * TABELA DIM_CREDOR:
 	
-![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/17526501-aace-4453-b500-d8b6776f23c8)
+	![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/17526501-aace-4453-b500-d8b6776f23c8)
 
 
 - e.cod_credor AS codigo_credor: Esta parte da consulta seleciona o campo cod_credor da tabela execucao_financeira_despesa
@@ -67,7 +67,7 @@ ascendente com base no campo cod_credor. Isso significa que os resultados serão
 
 * TABELA DIM_FONTE:
 	
-![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/52a786af-0318-4930-b19d-006e9014a00c)
+	![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/52a786af-0318-4930-b19d-006e9014a00c)
 
 
  - e.cod_fonte AS codigo_fonte: Esta parte da consulta seleciona o campo cod_fonte da tabela execucao_financeira_despesa 
@@ -94,7 +94,7 @@ Isso significa que os resultados serão exibidos em ordem crescente de código d
 
 * TABELA DIM_FUNCAO:
 	
-![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/ac615075-0eb8-4f33-b8df-063710b46bb5)
+	![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/ac615075-0eb8-4f33-b8df-063710b46bb5)
 
 
 
@@ -115,7 +115,7 @@ Isso significa que os resultados serão exibidos em ordem crescente de código d
 
 * TABELA DIM_SUBFUNCAO:
 	
-![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/d639b4c9-bf7c-44fb-92d5-0ecd980e5511)
+	![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/d639b4c9-bf7c-44fb-92d5-0ecd980e5511)
 
 
 
@@ -136,7 +136,7 @@ Isso significa que os resultados serão exibidos em ordem crescente de código d
 
 * TABELA DIM_ITEM:
 	
-![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/c14ce3a6-87d2-4239-a007-1750e1e10772)
+	![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/c14ce3a6-87d2-4239-a007-1750e1e10772)
 
 
 
@@ -160,7 +160,7 @@ Isso significa que os resultados serão exibidos em ordem crescente de código d
 	
 * TABELA DIM_ITEM_ELEMENTO:
 	
-![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/d39093da-65bc-45a5-89ab-764d88845eb8)
+	![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/d39093da-65bc-45a5-89ab-764d88845eb8)
 
 
 
@@ -185,7 +185,7 @@ Isso significa que os resultados serão exibidos em ordem crescente de código d
 
 * TABELA DIM_ITEM_CATEGORIA:
 
-![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/85d1be62-0d10-4a7d-9c01-997d14d54299)
+	![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/85d1be62-0d10-4a7d-9c01-997d14d54299)
 
 
 
@@ -208,7 +208,7 @@ Isso significa que os resultados serão exibidos em ordem crescente de código d
 
 *TABELA DIM_ITEM_GRUPO:
 	
-![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/7f0d1806-844b-462e-84f7-780d800be384)
+	![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/7f0d1806-844b-462e-84f7-780d800be384)
 
 
 
@@ -234,7 +234,7 @@ Isso significa que os resultados serão exibidos em ordem crescente de código d
 
 * TABELA DIM_ITEM_MODALIDADE:
 	
-![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/3c091b4c-6be4-4f4a-81cb-d7310e3ff5b3)
+	![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/3c091b4c-6be4-4f4a-81cb-d7310e3ff5b3)
 
 
 
@@ -260,7 +260,7 @@ Isso significa que os resultados serão exibidos em ordem crescente de código d
 
 * TABELA DIM_PROGRAMA:
 	
-![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/61c77c8e-10fd-4170-b94a-808e3be5da01)
+	![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/61c77c8e-10fd-4170-b94a-808e3be5da01)
 
 
 
@@ -282,7 +282,7 @@ Isso significa que os resultados serão exibidos em ordem crescente de código d
 
 * TABELA FATO_VALOR:
 	
-![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/390cefba-d543-48f3-a1ea-7c0f50556a4b)
+	![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/390cefba-d543-48f3-a1ea-7c0f50556a4b)
 
 
 - CONCAT(num_ano, cod_ne, codigo_orgao) AS codigo_empenho: Esta parte da consulta utiliza a função CONCAT para concatenar 
@@ -351,7 +351,7 @@ Optou-se pela criação de uma view criada a partir das tabelas constantes no DW
 A ideia seria otimizar o tempo, considerando um cenário real onde foi passada a demanda de criação de um dashboard onde os dados estavam desorganizados.
 Sendo assim possível entregar a demenda completa e de maneira correta, no menor tempo possível.	
 	
-![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/d8b88af1-7659-4a9c-8428-a47744730c17)
+	![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/d8b88af1-7659-4a9c-8428-a47744730c17)
 
 
 - v.codigo_empenho: Este campo representa o código do empenho.
