@@ -5,7 +5,22 @@ MODELAGEM DOS SCRIPTS PARA CRIAÇÃO DAS TABELAS DIMENSÃO E FATO:
 - A CRIAÇÃO SEMPRE DEVE SER FEITA EM 'DATA_WAREHOUSE', LOCAL ONDE ESTÁ O DW.
 	
 
-* TABELA DIM_ORGAO:	
+* TABELA DIM_ORGAO:
+
+
+- Na análise incial, foi indentificado orgãos com o mesmo código de orgão porém descrições diferentes.
+- Utilizamos esse SELECT para indentificar quais eram:
+
+![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/292f4ebf-0d28-4a0e-8f2f-9b1c3bcbfcdc)
+
+
+- Resultando nesses orgãos:
+
+![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/64a06817-9de4-46be-9087-a1c5a56eee7d)
+
+
+- A partir dai partimos para a correção na criação da DIM_ORGAO, utilizando a cláusula MIN para mostrar somente a menos descrição
+associada a código do orgão.
 	
 ![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/affe5ab0-6644-4799-a3de-4bbbad5389f8)
 
