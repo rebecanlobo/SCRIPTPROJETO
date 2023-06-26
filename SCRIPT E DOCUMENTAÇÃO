@@ -5,7 +5,7 @@ MODELAGEM DOS SCRIPTS PARA CRIAÇÃO DAS TABELAS DIMENSÃO E FATO:
 --APÓS EXECUTADO O SELECT E VERIFICADO OS RESULTADOS, INCLUE A PRIMEIRA LINHA CREATE TABLE AS 'NOME_TABELA'.
 --A CRIAÇÃO SEMPRE DEVE SER FEITA EM 'DATA_WAREHOUSE', LOCAL ONDE ESTÁ O DW.	
 
-TABELA DIM_ORGAO:	
+*TABELA DIM_ORGAO:	
 	
 CREATE TABLE data_warehouse.dim_orgao AS
 SELECT
@@ -33,7 +33,7 @@ Isso significa que os resultados serão agrupados por órgão de execução fina
 ordem ascendente com base no campo codigo_orgao. Isso significa que os resultados serão exibidos em ordem crescente de código de órgão.	
 	
 
-TABELA DIM_CREDOR:
+*TABELA DIM_CREDOR:
 	
 CREATE TABLE data_warehouse.dim_credor AS
 SELECT
@@ -61,7 +61,7 @@ no campo cod_credor. Isso significa que os resultados serão agrupados por códi
 ascendente com base no campo cod_credor. Isso significa que os resultados serão exibidos em ordem crescente de código de credor.	
 
 
-TABELA DIM_FONTE:
+*TABELA DIM_FONTE:
 	
 CREATE TABLE data_warehouse.dim_fonte AS
 SELECT
@@ -93,7 +93,7 @@ Isso significa que os resultados serão agrupados por código de fonte.
 Isso significa que os resultados serão exibidos em ordem crescente de código de fonte.
 	
 
-TABELA FATO_VALOR:
+*TABELA FATO_VALOR:
 	
 CREATE TABLE data_warehouse.fato_valor AS 
 SELECT 
@@ -186,8 +186,11 @@ O resultado é renomeado como valor_a_pagar.
 Isso significa que os resultados serão exibidos em ordem crescente de código de empenho.	
 
 	
-VW PARA CRIAÇÃO DO DASHBOARD: 
+*VW PARA CRIAÇÃO DO DASHBOARD: 
 
+Optou-se pela criação de uma view criada a partir das tabelas constantes no DW e fazer o tratamento dos valores, somente no script da view.
+A ideia seria otimizar o tempo, considerando um cenário real onde foi passada a demanda de criação de um dashboard onde os dados estavam desorganizados.
+Sendo assim possível entregar a demenda completa e de maneira correta, no menor tempo possível.	
 	
 CREATE VIEW data_warehouse.analise_teste1 AS 
 SELECT
@@ -287,7 +290,8 @@ valor do empenho e data do empenho.
 	
 
 
---dim_funcao
+*TABELA DIM_FUNCAO:
+	
 
 SELECT
     e.cod_funcao AS codigo_funcao,
@@ -296,7 +300,24 @@ FROM execucao_financeira_despesa e
 GROUP BY e.cod_funcao
 ORDER BY e.cod_funcao ASC
 
---dim_subfuncao
+
+- e.cod_funcao AS codigo_funcao: Este campo representa o código da função financeira. Ele é renomeado como "codigo_funcao".
+
+- MIN(e.dsc_funcao) AS nome_funcao: Este campo representa o nome da função financeira. A função de agregação "MIN" é usada para retornar 
+o valor mínimo da coluna "dsc_funcao". Ele é renomeado como "nome_funcao".
+
+- FROM execucao_financeira_despesa e: Esta parte da consulta especifica a tabela "execucao_financeira_despesa" de onde os dados serão selecionados. 
+É atribuído o alias "e" à tabela para facilitar a referência posterior.
+
+- GROUP BY e.cod_funcao: A cláusula GROUP BY é usada para agrupar os resultados com base no campo "cod_funcao". 
+Isso significa que os registros serão agrupados de acordo com os valores únicos do campo "cod_funcao".
+
+- ORDER BY e.cod_funcao ASC: A cláusula ORDER BY é usada para ordenar os resultados em ordem ascendente com base no campo "cod_funcao". 
+Isso significa que os resultados serão exibidos em ordem crescente de código de função.
+	
+
+*TABELA DIM_SUBFUNCAO:
+	
 
 SELECT
     e.cod_subfuncao AS codigo_subfuncao,
