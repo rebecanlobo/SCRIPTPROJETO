@@ -7,13 +7,8 @@ MODELAGEM DOS SCRIPTS PARA CRIAÇÃO DAS TABELAS DIMENSÃO E FATO:
 
 *TABELA DIM_ORGAO:	
 	
-CREATE TABLE data_warehouse.dim_orgao AS
-SELECT
-    e.codigo_orgao AS codigo_orgao,
-    COALESCE(MIN(e.dsc_orgao), e.codigo_orgao) AS nome_orgao
-FROM execucao_financeira_despesa e
-GROUP BY e.codigo_orgao
-ORDER BY e.codigo_orgao ASC
+![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/affe5ab0-6644-4799-a3de-4bbbad5389f8)
+
 
 - e.codigo_orgao AS codigo_orgao: Esta parte da consulta seleciona o campo codigo_orgao da tabela execucao_financeira_despesa e o renomeia como codigo_orgao. 
 O campo codigo_orgao é uma coluna que representa o código de identificação do órgão.
