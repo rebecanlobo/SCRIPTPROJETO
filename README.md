@@ -211,9 +211,9 @@ Isso significa que os resultados serão exibidos em ordem crescente de código d
 _______________________________________________________________________________________________________________________________________________________________________________
 	
 
-*TABELA DIM_ITEM_GRUPO:
+* TABELA DIM_ITEM_GRUPO:
 	
-![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/19b4ae26-2066-45f2-abfe-ace931c00135).
+	![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/19b4ae26-2066-45f2-abfe-ace931c00135).
 
 
 - e.cod_item_grupo AS codigo_item_grupo: Este campo representa o código do grupo do item financeiro. Ele é renomeado como "codigo_item_grupo".
@@ -356,8 +356,7 @@ ________________________________________________________________________________
 Optou-se pela criação de uma view criada a partir das tabelas constantes no DW e fazer o tratamento dos valores, somente no script da view.
 A ideia seria otimizar o tempo, considerando um cenário real onde foi passada a demanda de criação de um dashboard onde os dados estavam desorganizados.
 Sendo assim possível entregar a demenda completa e de maneira correta, no menor tempo possível.	
-	
-![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/d8b88af1-7659-4a9c-8428-a47744730c17)
+	![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/d8b88af1-7659-4a9c-8428-a47744730c17)
 
 
 - v.codigo_empenho: Este campo representa o código do empenho.
