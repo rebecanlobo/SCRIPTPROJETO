@@ -3,7 +3,7 @@ MODELAGEM DOS SCRIPTS PARA CRIAÇÃO DAS TABELAS DIMENSÃO E FATO:
 - TODAS AS TABELAS USAM A MESMA METODOLOGIA, PRIMEIRO CRIAMOS O SELECT PARA TRAZER OS CAMPOS NECESSÁRIOS PARA CRIAÇÃO DA TABELA.
 - APÓS EXECUTADO O SELECT E VERIFICADO OS RESULTADOS, INCLUE A PRIMEIRA LINHA CREATE TABLE AS 'NOME_TABELA'.
 - A CRIAÇÃO SEMPRE DEVE SER FEITA EM 'DATA_WAREHOUSE', LOCAL ONDE ESTÁ O DW.
-	
+_______________________________________________________________________________________________________________________________________________________________________________	
 
 * TABELA DIM_ORGAO:
 
@@ -40,7 +40,7 @@ Isso significa que os resultados serão agrupados por órgão de execução fina
 
 - ORDER BY e.codigo_orgao ASC: A cláusula ORDER BY é usada para ordenar os resultados em 
 ordem ascendente com base no campo codigo_orgao. Isso significa que os resultados serão exibidos em ordem crescente de código de órgão.	
-__________________________________________________________________________________________________________________________________________	
+_______________________________________________________________________________________________________________________________________________________________________________
 
 * TABELA DIM_CREDOR:
 	
@@ -63,7 +63,7 @@ no campo cod_credor. Isso significa que os resultados serão agrupados por códi
 
 - ORDER BY e.cod_credor ASC: A cláusula ORDER BY é usada para ordenar os resultados em ordem 
 ascendente com base no campo cod_credor. Isso significa que os resultados serão exibidos em ordem crescente de código de credor.	
-
+_______________________________________________________________________________________________________________________________________________________________________________
 
 * TABELA DIM_FONTE:
 	
@@ -90,7 +90,7 @@ Isso significa que os resultados serão agrupados por código de fonte.
 
 - ORDER BY e.cod_fonte ASC: A cláusula ORDER BY é usada para ordenar os resultados em ordem ascendente com base no campo cod_fonte. 
 Isso significa que os resultados serão exibidos em ordem crescente de código de fonte.
-	
+_______________________________________________________________________________________________________________________________________________________________________________	
 
 * TABELA DIM_FUNCAO:
 	
@@ -111,7 +111,7 @@ Isso significa que os registros serão agrupados de acordo com os valores único
 
 - ORDER BY e.cod_funcao ASC: A cláusula ORDER BY é usada para ordenar os resultados em ordem ascendente com base no campo "cod_funcao". 
 Isso significa que os resultados serão exibidos em ordem crescente de código de função.
-	
+_______________________________________________________________________________________________________________________________________________________________________________	
 
 * TABELA DIM_SUBFUNCAO:
 	
@@ -132,7 +132,7 @@ Isso significa que os registros serão agrupados de acordo com os valores único
 
 - ORDER BY e.cod_subfuncao ASC: A cláusula ORDER BY é usada para ordenar os resultados em ordem ascendente com base no campo "cod_subfuncao". 
 Isso significa que os resultados serão exibidos em ordem crescente de código de subfunção.	
-
+_______________________________________________________________________________________________________________________________________________________________________________
 
 * TABELA DIM_ITEM:
 	
@@ -156,7 +156,7 @@ Isso significa que os registros serão agrupados de acordo com os valores único
 
 - ORDER BY e.cod_item ASC: A cláusula ORDER BY é usada para ordenar os resultados em ordem ascendente com base no campo "cod_item". 
 Isso significa que os resultados serão exibidos em ordem crescente de código de item.	
-
+_______________________________________________________________________________________________________________________________________________________________________________
 	
 * TABELA DIM_ITEM_ELEMENTO:
 	
@@ -181,7 +181,7 @@ Isso significa que os registros serão agrupados de acordo com os valores único
 
 - ORDER BY e.cod_item_elemento ASC: A cláusula ORDER BY é usada para ordenar os resultados em ordem ascendente com base no campo "cod_item_elemento". 
 Isso significa que os resultados serão exibidos em ordem crescente de código do elemento do item.
-	
+_______________________________________________________________________________________________________________________________________________________________________________	
 
 * TABELA DIM_ITEM_CATEGORIA:
 
@@ -203,7 +203,7 @@ Isso significa que os registros serão agrupados de acordo com os valores único
 
 - ORDER BY e.cod_item_categoria ASC: A cláusula ORDER BY é usada para ordenar os resultados em ordem ascendente com base no campo "cod_item_categoria". 
 Isso significa que os resultados serão exibidos em ordem crescente de código da categoria do item.
-
+_______________________________________________________________________________________________________________________________________________________________________________
 	
 
 *TABELA DIM_ITEM_GRUPO:
@@ -229,7 +229,7 @@ Isso significa que os registros serão agrupados de acordo com os valores único
 
 - ORDER BY e.cod_item_grupo ASC: A cláusula ORDER BY é usada para ordenar os resultados em ordem ascendente com base no campo "cod_item_grupo". 
 Isso significa que os resultados serão exibidos em ordem crescente de código do grupo do item.
-
+_______________________________________________________________________________________________________________________________________________________________________________
 	
 
 * TABELA DIM_ITEM_MODALIDADE:
@@ -255,7 +255,7 @@ Isso significa que os registros serão agrupados de acordo com os valores único
 
 - ORDER BY e.cod_item_modalidade ASC: A cláusula ORDER BY é usada para ordenar os resultados em ordem ascendente com base no campo "cod_item_modalidade". 
 Isso significa que os resultados serão exibidos em ordem crescente de código da modalidade do item.
-
+_______________________________________________________________________________________________________________________________________________________________________________
 	
 
 * TABELA DIM_PROGRAMA:
@@ -278,7 +278,7 @@ Isso significa que os registros serão agrupados de acordo com os valores único
 
 - ORDER BY e.cod_programa ASC: A cláusula ORDER BY é usada para ordenar os resultados em ordem ascendente com base no campo "cod_programa". 
 Isso significa que os resultados serão exibidos em ordem crescente de código do programa.
-
+_______________________________________________________________________________________________________________________________________________________________________________
 
 * TABELA FATO_VALOR:
 	
@@ -343,7 +343,7 @@ O resultado é renomeado como valor_a_pagar.
 
 - ORDER BY codigo_empenho ASC: A cláusula ORDER BY é usada para ordenar os resultados em ordem ascendente com base no campo codigo_empenho. 
 Isso significa que os resultados serão exibidos em ordem crescente de código de empenho.	
-
+_______________________________________________________________________________________________________________________________________________________________________________
 	
 * VW PARA CRIAÇÃO DO DASHBOARD: 
 
