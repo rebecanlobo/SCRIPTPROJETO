@@ -1,8 +1,8 @@
 MODELAGEM DOS SCRIPTS PARA CRIAÇÃO DAS TABELAS DIMENSÃO E FATO:
 
---TODAS AS TABELAS USAM A MESMA METODOLOGIA, PRIMEIRO CRIAMOS O SELECT PARA TRAZER OS CAMPOS NECESSÁRIOS PARA CRIAÇÃO DA TABELA.
---APÓS EXECUTADO O SELECT E VERIFICADO OS RESULTADOS, INCLUE A PRIMEIRA LINHA CREATE TABLE AS 'NOME_TABELA'.
---A CRIAÇÃO SEMPRE DEVE SER FEITA EM 'DATA_WAREHOUSE', LOCAL ONDE ESTÁ O DW.
+- TODAS AS TABELAS USAM A MESMA METODOLOGIA, PRIMEIRO CRIAMOS O SELECT PARA TRAZER OS CAMPOS NECESSÁRIOS PARA CRIAÇÃO DA TABELA.
+- APÓS EXECUTADO O SELECT E VERIFICADO OS RESULTADOS, INCLUE A PRIMEIRA LINHA CREATE TABLE AS 'NOME_TABELA'.
+- A CRIAÇÃO SEMPRE DEVE SER FEITA EM 'DATA_WAREHOUSE', LOCAL ONDE ESTÁ O DW.
 	
 
 *TABELA DIM_ORGAO:	
@@ -30,13 +30,8 @@ ordem ascendente com base no campo codigo_orgao. Isso significa que os resultado
 
 *TABELA DIM_CREDOR:
 	
-CREATE TABLE data_warehouse.dim_credor AS
-SELECT
-    e.cod_credor AS codigo_credor,
-    MIN(e.dsc_nome_credor) AS nome_credor
-FROM execucao_financeira_despesa e
-GROUP BY e.cod_credor
-ORDER BY e.cod_credor ASC
+![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/17526501-aace-4453-b500-d8b6776f23c8)
+
 
 - e.cod_credor AS codigo_credor: Esta parte da consulta seleciona o campo cod_credor da tabela execucao_financeira_despesa
  e o renomeia como codigo_credor. O campo cod_credor é uma coluna que representa o código de identificação do credor.
@@ -58,14 +53,8 @@ ascendente com base no campo cod_credor. Isso significa que os resultados serão
 
 *TABELA DIM_FONTE:
 	
-CREATE TABLE data_warehouse.dim_fonte AS
-SELECT
-    e.cod_fonte AS codigo_fonte,
-    MIN(e.dsc_fonte) AS nome_fonte
-FROM execucao_financeira_despesa e
-WHERE e.cod_item IS NOT NULL
-GROUP BY e.cod_fonte
-ORDER BY e.cod_fonte ASC
+![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/52a786af-0318-4930-b19d-006e9014a00c)
+
 
  - e.cod_fonte AS codigo_fonte: Esta parte da consulta seleciona o campo cod_fonte da tabela execucao_financeira_despesa 
 e o renomeia como codigo_fonte. O campo cod_fonte é uma coluna que representa o código de identificação da fonte.
@@ -91,36 +80,7 @@ Isso significa que os resultados serão exibidos em ordem crescente de código d
 
 *TABELA FATO_VALOR:
 	
-CREATE TABLE data_warehouse.fato_valor AS 
-SELECT 
-	CONCAT(num_ano, cod_ne, codigo_orgao) AS codigo_empenho,
-	codigo_orgao,
-	cod_credor AS codigo_credor,
-	cod_fonte AS codigo_fonte,
-	cod_funcao AS codigo_funcao,
-	cod_subfuncao AS codigo_subfuncao,
-	cod_item AS codigo_item,
-	cod_item_elemento AS codigo_item_elemento,
-	cod_item_categoria,
-	cod_item_grupo,
-	cod_item_modalidade,
-	cod_programa, 
-	num_sic,
-	cod_np,
-	COALESCE(vlr_empenho, 0.00) AS valor_empenho,
-	COALESCE(vlr_liquidado, 0.00) AS valor_liquidado,
-	COALESCE(valor_pago, 0.00) AS valor_pago,
-		CASE
-			WHEN vlr_resto_pagar IS NULL THEN '0.00'
-			WHEN vlr_resto_pagar = 0.00 THEN (vlr_empenho - valor_pago) 
-			END AS valor_a_pagar,
-	dth_empenho AS data_empenho,
-	dth_pagamento AS data_pagamento,
-	dth_liquidacao AS data_liquidacao,
-	dth_processamento AS data_processamento,
-	num_ano_np
-FROM execucao_financeira_despesa
-ORDER BY codigo_empenho ASC
+
 
 - CONCAT(num_ano, cod_ne, codigo_orgao) AS codigo_empenho: Esta parte da consulta utiliza a função CONCAT para concatenar 
 os valores dos campos num_ano, cod_ne e codigo_orgao. O resultado é renomeado como codigo_empenho e representa o código do empenho, 
@@ -287,13 +247,8 @@ valor do empenho e data do empenho.
 
 *TABELA DIM_FUNCAO:
 	
-CREATE TABLE datawarehouse.dim_funcao AS
-SELECT
-    e.cod_funcao AS codigo_funcao,
-    MIN(e.dsc_funcao) AS nome_funcao
-FROM execucao_financeira_despesa e
-GROUP BY e.cod_funcao
-ORDER BY e.cod_funcao ASC
+![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/ac615075-0eb8-4f33-b8df-063710b46bb5)
+
 
 
 - e.cod_funcao AS codigo_funcao: Este campo representa o código da função financeira. Ele é renomeado como "codigo_funcao".
