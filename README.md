@@ -11,8 +11,7 @@ MODELAGEM DOS SCRIPTS PARA CRIAÇÃO DAS TABELAS DIMENSÃO E FATO:
 - Na análise incial, foi indentificado orgãos com o mesmo código de orgão porém descrições diferentes.
 - Utilizamos esse SELECT para indentificar quais eram:
 
-![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/292f4ebf-0d28-4a0e-8f2f-9b1c3bcbfcdc)
-
+![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/292f4ebf-0d28-4a0e-8f2f-9b1c3bcbfcdc) - a subconsulta dentro do HAVING seleciona os códigos de órgãos que possuem mais de uma descrição de órgão associado. Em seguida, a consulta principal exibe apenas os registros que possuem um código de órgão presente na subconsulta, filtrando apenas os casos em que o código do órgão é igual, mas o nome do órgão é diferente.
 
 - Resultando nesses orgãos:
 
