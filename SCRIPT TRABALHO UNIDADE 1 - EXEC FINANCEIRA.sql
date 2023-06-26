@@ -1,7 +1,12 @@
 
 MODELAGEM DOS SCRIPTS PARA CRIAÇÃO DAS TABELAS DIMENSÃO E FATO:
 
---dim_orgao
+--TODAS AS TABELAS USAM A MESMA METODOLOGIA, PRIMEIRO CRIASSE O SELECT PARA TRAZER OS CAMPOS NECESSÁRIOS PARA CRIAÇÃO DA TABELA.
+--APÓS EXECUTADO O SELECT E VERIFICADO OS RESULTADOS, INCLUE A PRIMEIRA LINHA CREATE TABLE AS 'NOME_TABELA'.
+--A CRIAÇÃO SEMPRE DEVE SER FEITA EM 'DATA_WAREHOUSE', LOCAL ONDE ESTÁ O DW.	
+
+TABELA DIM_ORGAO:	
+	
 CREATE TABLE data_warehouse.dim_orgao AS
 SELECT
     e.codigo_orgao AS codigo_orgao,
@@ -26,8 +31,10 @@ Isso significa que os resultados serão agrupados por órgão de execução fina
 
 - ORDER BY e.codigo_orgao ASC: A cláusula ORDER BY é usada para ordenar os resultados em 
 ordem ascendente com base no campo codigo_orgao. Isso significa que os resultados serão exibidos em ordem crescente de código de órgão.	
+	
 
---dim_credor
+TABELA DIM_CREDOR:
+	
 CREATE TABLE data_warehouse.dim_credor AS
 SELECT
     e.cod_credor AS codigo_credor,
@@ -35,6 +42,23 @@ SELECT
 FROM execucao_financeira_despesa e
 GROUP BY e.cod_credor
 ORDER BY e.cod_credor ASC
+
+- e.cod_credor AS codigo_credor: Esta parte da consulta seleciona o campo cod_credor da tabela execucao_financeira_despesa
+ e o renomeia como codigo_credor. O campo cod_credor é uma coluna que representa o código de identificação do credor.
+
+- MIN(e.dsc_nome_credor) AS nome_credor: Nesta parte da consulta, usa-se a função MIN para obter o valor mínimo da 
+coluna dsc_nome_credor da tabela execucao_financeira_despesa. 
+Essa função é aplicada para encontrar o nome do credor que vem primeiro em ordem alfabética. 
+O resultado dessa operação é renomeado como nome_credor, que representa o nome do credor de execução financeira de despesas.
+
+- FROM execucao_financeira_despesa e: Esta parte da consulta especifica a tabela execucao_financeira_despesa 
+e a renomeia como e, que é um alias para facilitar a referência aos campos da tabela.
+
+- GROUP BY e.cod_credor: Aqui, a cláusula GROUP BY é usada para agrupar os resultados com base 
+no campo cod_credor. Isso significa que os resultados serão agrupados por código de credor.
+
+- ORDER BY e.cod_credor ASC: A cláusula ORDER BY é usada para ordenar os resultados em ordem 
+ascendente com base no campo cod_credor. Isso significa que os resultados serão exibidos em ordem crescente de código de credor.	
 
 --dim_fonte
 CREATE TABLE data_warehouse.dim_fonte AS
