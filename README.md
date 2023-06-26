@@ -40,7 +40,7 @@ Isso significa que os resultados serão agrupados por órgão de execução fina
 
 - ORDER BY e.codigo_orgao ASC: A cláusula ORDER BY é usada para ordenar os resultados em 
 ordem ascendente com base no campo codigo_orgao. Isso significa que os resultados serão exibidos em ordem crescente de código de órgão.	
-	
+__________________________________________________________________________________________________________________________________________	
 
 * TABELA DIM_CREDOR:
 	
