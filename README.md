@@ -94,7 +94,8 @@ ________________________________________________________________________________
 
 * TABELA DIM_FUNCAO:
 	
-	![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/ac615075-0eb8-4f33-b8df-063710b46bb5)
+	![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/6f4d2d1f-0c21-47cb-a699-580003d3ed5c)
+
 
 
 
@@ -115,7 +116,8 @@ ________________________________________________________________________________
 
 * TABELA DIM_SUBFUNCAO:
 	
-	![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/d639b4c9-bf7c-44fb-92d5-0ecd980e5511)
+	![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/cd36fb01-8dd1-4123-828b-68e85db2b797)
+
 
 
 
@@ -136,7 +138,8 @@ ________________________________________________________________________________
 
 * TABELA DIM_ITEM:
 	
-	![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/c14ce3a6-87d2-4239-a007-1750e1e10772)
+	![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/bebef8e7-3ca9-48ad-b107-d1b9f04a5320)
+
 
 
 
@@ -160,7 +163,8 @@ ________________________________________________________________________________
 	
 * TABELA DIM_ITEM_ELEMENTO:
 	
-	![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/d39093da-65bc-45a5-89ab-764d88845eb8)
+	![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/eecdef9b-4fc2-4553-b672-b64bf0452351)
+
 
 
 
@@ -185,7 +189,8 @@ ________________________________________________________________________________
 
 * TABELA DIM_ITEM_CATEGORIA:
 
-	![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/85d1be62-0d10-4a7d-9c01-997d14d54299)
+	![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/c9ea59a8-3a1c-4c65-8cb7-c097cbd641cf)
+
 
 
 
@@ -208,7 +213,8 @@ ________________________________________________________________________________
 
 *TABELA DIM_ITEM_GRUPO:
 	
-	![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/7f0d1806-844b-462e-84f7-780d800be384)
+	![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/0d69186b-3490-44dd-bd24-9abc38f616a3)
+
 
 
 
@@ -234,7 +240,8 @@ ________________________________________________________________________________
 
 * TABELA DIM_ITEM_MODALIDADE:
 	
-	![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/3c091b4c-6be4-4f4a-81cb-d7310e3ff5b3)
+	![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/461b2096-e84d-49c5-ac5b-da6e1f70d888)
+
 
 
 
@@ -260,7 +267,8 @@ ________________________________________________________________________________
 
 * TABELA DIM_PROGRAMA:
 	
-	![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/61c77c8e-10fd-4170-b94a-808e3be5da01)
+	![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/d1d0441d-e84e-4630-8762-e00d6d7ff16c)
+
 
 
 
