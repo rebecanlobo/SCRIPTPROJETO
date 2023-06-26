@@ -2,7 +2,7 @@
 CREATE TABLE data_warehouse.dim_orgao AS
 SELECT
     e.codigo_orgao AS codigo_orgao,
-    MIN(e.dsc_orgao) AS nome_orgao
+    COALESCE(MIN(e.dsc_orgao), e.codigo_orgao) AS nome_orgao
 FROM execucao_financeira_despesa e
 GROUP BY e.codigo_orgao
 ORDER BY e.codigo_orgao ASC
@@ -22,6 +22,7 @@ SELECT
     e.cod_fonte AS codigo_fonte,
     MIN(e.dsc_fonte) AS nome_fonte
 FROM execucao_financeira_despesa e
+WHERE e.cod_item IS NOT NULL
 GROUP BY e.cod_fonte
 ORDER BY e.cod_fonte ASC
 
@@ -61,16 +62,10 @@ FROM execucao_financeira_despesa
 --WHERE cod_ne = '00005274'
 ORDER BY codigo_empenho ASC
 
--- FUNÇÃO DATA
-CREATE OR REPLACE FUNCTION mes_nome_pt(data date)
-  RETURNS TEXT AS $$
-DECLARE
-  meses TEXT[] := ARRAY['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
-BEGIN
-  RETURN meses[EXTRACT(MONTH FROM data)];
-END;
-$$ LANGUAGE plpgsql;
-
+--teste da função CONCAT, criação do codigo_empenho
+--select 
+--CONCAT(num_ano, cod_ne, codigo_orgao) AS codigo_empenho
+--from execucao_financeira_despesa
 
 --VIEW PARA CRIAÇÃO DO DASHBOARD
 --MODELO CORRETO
@@ -111,20 +106,81 @@ GROUP BY
 --LIMIT 10	
 
 
+--dim_funcao
 
+SELECT
+    e.cod_funcao AS codigo_funcao,
+    MIN(e.dsc_funcao) AS nome_funcao
+FROM execucao_financeira_despesa e
+GROUP BY e.cod_funcao
+ORDER BY e.cod_funcao ASC
 
+--dim_subfuncao
 
+SELECT
+    e.cod_subfuncao AS codigo_subfuncao,
+    MIN(e.dsc_subfuncao) AS nome_subfuncao
+FROM execucao_financeira_despesa e
+GROUP BY e.cod_subfuncao
+ORDER BY e.cod_subfuncao ASC
 
-select * from data_warehouse.dim_tempo
+--dim_item
 
+SELECT
+    e.cod_item AS codigo_item,
+    MIN(e.dsc_item) AS nome_item
+FROM execucao_financeira_despesa e
+WHERE e.cod_item IS NOT NULL --incluído para remover uma linha null
+GROUP BY e.cod_item
+ORDER BY e.cod_item ASC
 
+--dim_item_elemento
 
+SELECT
+    e.cod_item_elemento AS codigo_item_elemento,
+    MIN(e.dsc_item_elemento) AS nome_item_elemento
+FROM execucao_financeira_despesa e
+WHERE e.cod_item_elemento IS NOT NULL
+GROUP BY e.cod_item_elemento 
+ORDER BY e.cod_item_elemento  ASC
 
+--dim_item_categoria
 
---select 
---	CONCAT(num_ano, cod_ne, codigo_orgao) AS codigo_empenho
---from execucao_financeira_despesa
+SELECT
+    e.cod_item_categoria AS codigo_item_categoria,
+    MIN(e.dsc_item_categoria) AS nome_item_categoria
+FROM execucao_financeira_despesa e
+GROUP BY e.cod_item_categoria 
+ORDER BY e.cod_item_categoria  ASC
 
+--dim_item_grupo
+
+SELECT
+    e.cod_item_grupo AS codigo_item_grupo,
+    MIN(e.dsc_item_grupo) AS nome_item_grupo
+FROM execucao_financeira_despesa e 
+WHERE e.cod_item_grupo IS NOT NULL
+GROUP BY e.cod_item_grupo 
+ORDER BY e.cod_item_grupo  ASC
+
+--dim_item_modalidade
+
+SELECT
+    e.cod_item_modalidade AS codigo_item_modalidade,
+    MIN(e.dsc_item_modalidade) AS nome_item_modalidade,
+	MIN(e.dsc_modalidade_licitacao) AS nome_item_modalidade
+FROM execucao_financeira_despesa e 
+GROUP BY e.cod_item_modalidade 
+ORDER BY e.cod_item_modalidade  ASC
+
+--dim_programa
+
+SELECT
+    e.cod_programa AS codigo_programa,
+    MIN(e.dsc_programa) AS nome_programa
+FROM execucao_financeira_despesa e 
+GROUP BY e.cod_programa 
+ORDER BY e.cod_programa  ASC
 
 
 
