@@ -144,7 +144,7 @@ Isso significa que os registros serão agrupados de acordo com os valores único
 Isso significa que os resultados serão exibidos em ordem crescente de código de item.	
 
 	
-*T ABELA DIM_ITEM_ELEMENTO:
+* TABELA DIM_ITEM_ELEMENTO:
 	
 ![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/d39093da-65bc-45a5-89ab-764d88845eb8)
 
