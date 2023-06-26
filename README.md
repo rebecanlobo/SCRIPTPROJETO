@@ -5,7 +5,7 @@ MODELAGEM DOS SCRIPTS PARA CRIAÇÃO DAS TABELAS DIMENSÃO E FATO:
 - A CRIAÇÃO SEMPRE DEVE SER FEITA EM 'DATA_WAREHOUSE', LOCAL ONDE ESTÁ O DW.
 	
 
-*TABELA DIM_ORGAO:	
+* TABELA DIM_ORGAO:	
 	
 ![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/affe5ab0-6644-4799-a3de-4bbbad5389f8)
 
@@ -28,7 +28,7 @@ Isso significa que os resultados serão agrupados por órgão de execução fina
 ordem ascendente com base no campo codigo_orgao. Isso significa que os resultados serão exibidos em ordem crescente de código de órgão.	
 	
 
-*TABELA DIM_CREDOR:
+* TABELA DIM_CREDOR:
 	
 ![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/17526501-aace-4453-b500-d8b6776f23c8)
 
@@ -51,7 +51,7 @@ no campo cod_credor. Isso significa que os resultados serão agrupados por códi
 ascendente com base no campo cod_credor. Isso significa que os resultados serão exibidos em ordem crescente de código de credor.	
 
 
-*TABELA DIM_FONTE:
+* TABELA DIM_FONTE:
 	
 ![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/52a786af-0318-4930-b19d-006e9014a00c)
 
@@ -78,7 +78,7 @@ Isso significa que os resultados serão agrupados por código de fonte.
 Isso significa que os resultados serão exibidos em ordem crescente de código de fonte.
 	
 
-*TABELA FATO_VALOR:
+* TABELA FATO_VALOR:
 	
 
 
@@ -142,7 +142,7 @@ O resultado é renomeado como valor_a_pagar.
 Isso significa que os resultados serão exibidos em ordem crescente de código de empenho.	
 
 	
-*VW PARA CRIAÇÃO DO DASHBOARD: 
+* VW PARA CRIAÇÃO DO DASHBOARD: 
 
 Optou-se pela criação de uma view criada a partir das tabelas constantes no DW e fazer o tratamento dos valores, somente no script da view.
 A ideia seria otimizar o tempo, considerando um cenário real onde foi passada a demanda de criação de um dashboard onde os dados estavam desorganizados.
@@ -245,7 +245,7 @@ Essa cláusula agrupa os resultados pelo código do empenho, código do órgão,
 valor do empenho e data do empenho.	
 	
 
-*TABELA DIM_FUNCAO:
+* TABELA DIM_FUNCAO:
 	
 ![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/ac615075-0eb8-4f33-b8df-063710b46bb5)
 
@@ -266,15 +266,10 @@ Isso significa que os registros serão agrupados de acordo com os valores único
 Isso significa que os resultados serão exibidos em ordem crescente de código de função.
 	
 
-*TABELA DIM_SUBFUNCAO:
+* TABELA DIM_SUBFUNCAO:
 	
-CREATE TABLE datawarehouse.dim_subfuncao AS
-SELECT
-    e.cod_subfuncao AS codigo_subfuncao,
-    MIN(e.dsc_subfuncao) AS nome_subfuncao
-FROM execucao_financeira_despesa e
-GROUP BY e.cod_subfuncao
-ORDER BY e.cod_subfuncao ASC
+![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/d639b4c9-bf7c-44fb-92d5-0ecd980e5511)
+
 
 
 - e.cod_subfuncao AS codigo_subfuncao: Este campo representa o código da subfunção financeira. Ele é renomeado como "codigo_subfuncao".
@@ -292,16 +287,10 @@ Isso significa que os registros serão agrupados de acordo com os valores único
 Isso significa que os resultados serão exibidos em ordem crescente de código de subfunção.	
 
 
-*TABELA DIM_ITEM:
+* TABELA DIM_ITEM:
 	
-CREATE TABLE datawarehouse.dim_item AS
-SELECT
-    e.cod_item AS codigo_item,
-    MIN(e.dsc_item) AS nome_item
-FROM execucao_financeira_despesa e
-WHERE e.cod_item IS NOT NULL --incluído para remover uma linha null
-GROUP BY e.cod_item
-ORDER BY e.cod_item ASC
+![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/c14ce3a6-87d2-4239-a007-1750e1e10772)
+
 
 
 - e.cod_item AS codigo_item: Este campo representa o código do item financeiro. Ele é renomeado como "codigo_item".
@@ -322,16 +311,10 @@ Isso significa que os registros serão agrupados de acordo com os valores único
 Isso significa que os resultados serão exibidos em ordem crescente de código de item.	
 
 	
-*TABELA DIM_ITEM_ELEMENTO:
+*T ABELA DIM_ITEM_ELEMENTO:
 	
-CREATE TABLE datawarehouse.dim_item_elemento AS
-SELECT
-    e.cod_item_elemento AS codigo_item_elemento,
-    MIN(e.dsc_item_elemento) AS nome_item_elemento
-FROM execucao_financeira_despesa e
-WHERE e.cod_item_elemento IS NOT NULL
-GROUP BY e.cod_item_elemento 
-ORDER BY e.cod_item_elemento  ASC
+![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/d39093da-65bc-45a5-89ab-764d88845eb8)
+
 
 
 - e.cod_item_elemento AS codigo_item_elemento: Este campo representa o código do elemento do item financeiro. Ele é renomeado como "codigo_item_elemento".
@@ -353,15 +336,10 @@ Isso significa que os registros serão agrupados de acordo com os valores único
 Isso significa que os resultados serão exibidos em ordem crescente de código do elemento do item.
 	
 
-*TABELA DIM_ITEM_CATEGORIA:
+* TABELA DIM_ITEM_CATEGORIA:
 
-CREATE TABLE datawarehouse.dim_item_categoria AS	
-SELECT
-    e.cod_item_categoria AS codigo_item_categoria,
-    MIN(e.dsc_item_categoria) AS nome_item_categoria
-FROM execucao_financeira_despesa e
-GROUP BY e.cod_item_categoria 
-ORDER BY e.cod_item_categoria  ASC
+![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/85d1be62-0d10-4a7d-9c01-997d14d54299)
+
 
 
 - e.cod_item_categoria AS codigo_item_categoria: Este campo representa o código da categoria do item financeiro. Ele é renomeado como "codigo_item_categoria".
@@ -381,16 +359,10 @@ Isso significa que os resultados serão exibidos em ordem crescente de código d
 
 	
 
-*TABELA DIM_ITEM_CATEGORIA:
+*TABELA DIM_ITEM_GRUPO:
 	
-CREATE TABLE datawarehouse.dim_item_grupo AS
-SELECT
-    e.cod_item_grupo AS codigo_item_grupo,
-    MIN(e.dsc_item_grupo) AS nome_item_grupo
-FROM execucao_financeira_despesa e 
-WHERE e.cod_item_grupo IS NOT NULL
-GROUP BY e.cod_item_grupo 
-ORDER BY e.cod_item_grupo  ASC
+![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/7f0d1806-844b-462e-84f7-780d800be384)
+
 
 
 - e.cod_item_grupo AS codigo_item_grupo: Este campo representa o código do grupo do item financeiro. Ele é renomeado como "codigo_item_grupo".
@@ -413,16 +385,10 @@ Isso significa que os resultados serão exibidos em ordem crescente de código d
 
 	
 
-*TABELA DIM_ITEM_MODALIDADE:
+* TABELA DIM_ITEM_MODALIDADE:
 	
-CREATE TABLE datawarehouse.dim_item_modalidade AS
-SELECT
-    e.cod_item_modalidade AS codigo_item_modalidade,
-    MIN(e.dsc_item_modalidade) AS nome_item_modalidade,
-	MIN(e.dsc_modalidade_licitacao) AS nome_item_modalidade
-FROM execucao_financeira_despesa e 
-GROUP BY e.cod_item_modalidade 
-ORDER BY e.cod_item_modalidade  ASC
+![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/3c091b4c-6be4-4f4a-81cb-d7310e3ff5b3)
+
 
 
 - e.cod_item_modalidade AS codigo_item_modalidade: Este campo representa o código da modalidade do item financeiro. Ele é renomeado como "codigo_item_modalidade".
@@ -445,15 +411,10 @@ Isso significa que os resultados serão exibidos em ordem crescente de código d
 
 	
 
-*TABELA DIM_PROGRAMA:
+* TABELA DIM_PROGRAMA:
 	
-CREATE TABLE datawarehouse.dim_programa AS
-SELECT
-    e.cod_programa AS codigo_programa,
-    MIN(e.dsc_programa) AS nome_programa
-FROM execucao_financeira_despesa e 
-GROUP BY e.cod_programa 
-ORDER BY e.cod_programa  ASC
+![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/61c77c8e-10fd-4170-b94a-808e3be5da01)
+
 
 
 - e.cod_programa AS codigo_programa: Este campo representa o código do programa financeiro. Ele é renomeado como "codigo_programa".
