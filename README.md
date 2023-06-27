@@ -1,3 +1,11 @@
+OBJETIVO:
+
+- Análisar as informações contidas no banco de dados (execução_financeira) proposto.
+- Tratar os dados; elimando nulls, ajustando valores e datas para melhor análise.
+- Construção de um Data Warehouse a partir do banco supracitado.
+- Utilizar o DW para construção de um Dashboard utilizando uma ferramenta de BI, apresentando insights relevantes.
+_______________________________________________________________________________________________________________________________________________________________________________
+
 MODELAGEM LÓGICA, CONCEITUAL E DIMENSIONAL:
 
 - LÓGICA:
