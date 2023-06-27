@@ -1,6 +1,17 @@
-MODELAGEM LÓGICA, CONCEITUAL E LÓGICA:
+MODELAGEM LÓGICA, CONCEITUAL E DIMENSIONAL:
 
-https://drive.google.com/drive/folders/1R-A0fUCAP6Ts5TQwLZdNj_Ybv-z8f6MZ
+- LÓGICA:
+ 	 		![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/81289f4f-dd79-4e2b-9e55-52011e65ec2e)
+
+- CONCEITUAL:
+  			![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/25fe9e5c-ffb1-437d-8e24-be7c8c14c207)
+
+- DIMENSIONAL:
+  			![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/1931cdac-d52a-4607-9895-657906f35174)
+
+	- Modelo Dimensional feito exemplificando a View utilizada para construção do Dashboard.
+  _______________________________________________________________________________________________________________________________________________________________________________
+
 
 
 MODELAGEM DOS SCRIPTS PARA CRIAÇÃO DAS TABELAS DIMENSÃO E FATO:
