@@ -1,3 +1,6 @@
+DESIGNERS DO PROJETO: REBECA LOBO E ISRAEL ALVES
+_______________________________________________________________________________________________________________________________________________________________________________
+
 OBJETIVO:
 
 - Análisar as informações contidas no banco de dados (execução_financeira) proposto.
@@ -46,7 +49,7 @@ ________________________________________________________________________________
 	![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/64a06817-9de4-46be-9087-a1c5a56eee7d)
 
 
-- A partir dai partimos para a correção na criação da DIM_ORGAO, utilizando a cláusula MIN para mostrar somente a menos descrição
+- A partir dai partimos para a correção na criação da DIM_ORGAO, utilizando a cláusula MIN para mostrar somente a menor descrição
 associada a código do orgão.
 	
 	![image](https://github.com/israelalvees/SCRIPTPROJETO/assets/128307729/affe5ab0-6644-4799-a3de-4bbbad5389f8)
@@ -447,3 +450,15 @@ com base no campo data_empenho, relacionando as informações do tempo.
 - GROUP BY v.codigo_empenho, v.codigo_orgao, o.nome_orgao, v.codigo_credor, cc.nome_credor, v.codigo_fonte, cf.nome_fonte, v.valor_empenho, t.data: 
 Essa cláusula agrupa os resultados pelo código do empenho, código do órgão, nome do órgão, código do credor, nome do credor, código da fonte, nome da fonte, 
 valor do empenho e data do empenho.
+_______________________________________________________________________________________________________________________________________________________________________________
+
+- DASHBOARD:
+
+  https://app.powerbi.com/view?r=eyJrIjoiN2YxMWNiYmEtYzFlYy00NDBhLTgxNTctMTc2YzI4YTVlYzJiIiwidCI6IjY5YjJmMGUzLTRkNjctNGFkMi04OGZmLWU5MzMzZDMwOGIzMiJ9&pageName=ReportSection
+
+	- Foi utilizado como ferramenta de BI para criação do dashboard o Power BI.
+
+- CONSIDERAÇÕES SOBRE O DASHBOARD:
+
+  	- O intuido de um Dashboard é apresentar um conjunto de dados, outrora desorganizados e que já passaram pelo processo de ETL, de uma maneira de fácil visualização
+  	para qualquer usuário. Seguindo essa metodologia, é apresentado um dashboard intuitívo. Podendo ser filtrado desde uma forma geral, até uma combinação distinta entre os 	filtros (orgão, credor, fonte), tão bem quanto a data (ano, trimestre e mês). Ademais, é apresentado nas demais telas alguns insights relevantes ao contexto.
